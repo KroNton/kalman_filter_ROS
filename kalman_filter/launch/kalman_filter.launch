@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Starts Kalman Filter Node -->
+
+<launch>
+    <node pkg="kalman_filter" name="kalman_filter_node" type="kalman_filter.py" output="screen"> 
+    </node>
+</launch>

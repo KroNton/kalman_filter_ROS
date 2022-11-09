@@ -1,0 +1,25 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/kronton/cartographer_ws/install_isolated/include/**",
+        "/home/kronton/pura_ws/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/kronton/catkin_ws/src/kalman_filters_files/ekf_ukf/include/**",
+        "/home/kronton/pura_ws/src/PURA_simulation/realsense_ros_gazebo/include/**",
+        "/home/kronton/pura_ws/src/slam_glass/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Auxiliary nodes for the UKF exercise -->
+
+<launch>
+
+  <!-- Spawn Turtlebot model in Gazebo -->
+  <include file="$(find ekf_ukf)/launch/spawn_turtlebot.launch"/>
+
+  <!-- Starts ROS Node that publishes noisy odometry -->
+  <include file="$(find ekf_ukf)/launch/noisy_odom.launch"/>
+ 
+</launch>

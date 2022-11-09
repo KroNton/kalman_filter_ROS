@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Starts ROS Node that commands a robot to move in a square shape -->
+
+<launch>
+
+  <!-- change bool value if robot oscillates facing in the opposite direction of target waypoint -->
+  <param name="flip_steering" type="bool" value="true" />
+  <node pkg="ekf_ukf" type="move_in_square" name="move_in_square_node" output="screen">
+  </node>
+
+</launch>

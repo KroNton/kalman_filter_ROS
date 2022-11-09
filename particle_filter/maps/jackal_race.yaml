@@ -1,0 +1,6 @@
+free_thresh: 0.196
+image: jackal_race.pgm
+negate: 0
+occupied_thresh: 0.65
+origin: [-9.680000000000003, -9.959999999999997, 0.0]
+resolution: 0.02

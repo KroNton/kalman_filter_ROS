@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Requirement: Gazebo simulation running -->
+<!-- e.g. roslaunch turtlebot_gazebo turtlebot_world.launch -->
+<!-- Requirement: noisy odometry node running -->
+
+<launch>
+
+  <!-- Configure Rviz launch -->
+  <!-- Flag indicating whether to start RViz from this launch file, allows specifying values that are passed via the command-line -->
+  <arg name="use_rviz" default="true" />
+  <!-- Arg indicating what configuration file to use, allows specifying values that are passed via the command-line -->
+  <arg name="config_file" default="$(find ekf_ukf)/config/plot_odom_drift.rviz"/>
+  <!-- Run Rviz -->
+  <node if="$(arg use_rviz)" name="rviz" pkg="rviz" type="rviz" args="-d $(arg config_file)"/>
+
+</launch>

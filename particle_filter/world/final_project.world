@@ -1,0 +1,2679 @@
+<sdf version='1.6'>
+  <world name='default'>
+    <scene>
+      <shadows>0</shadows>
+      <ambient>0.8 0.8 0.8 1</ambient>
+      <background>1 1 1 1</background>
+      <grid>0</grid>
+      <origin_visual>0</origin_visual>
+    </scene>
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>500</real_time_update_rate>
+    </physics>
+
+   <model name='ground_plane'>
+    <static>1</static>
+    <link name='link'>
+       <collision name='collision'>
+           <geometry>
+               <plane>
+                   <normal>0 0 1</normal>
+                   <size>50 50</size>
+               </plane>
+           </geometry>
+           <surface>
+            <friction>
+                <ode>
+                    <mu>100</mu>
+                    <mu2>50</mu2>
+                    </ode>
+            </friction>
+            <bounce/>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+         <max_contacts>10</max_contacts>
+       </collision>
+       <visual name='visual'>
+           <cast_shadows>0</cast_shadows>
+            <geometry>
+               <plane>
+                   <normal>0 0 1</normal>
+                       <size>100 100</size>
+              </plane>
+           </geometry>
+           <material>
+           <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+           </script>
+           </material>
+        </visual>
+    <velocity_decay>
+       <linear>0</linear>
+       <angular>0</angular>
+   </velocity_decay>
+   <self_collide>0</self_collide>
+   <kinematic>0</kinematic>
+   <gravity>1</gravity>
+ </link>
+</model>
+
+
+    <!-- A ground track -->
+    
+    <include>
+      <uri>model://tunnel</uri>
+      <pose>0 0 0.01 0 0 0</pose>
+    </include>
+
+    <!-- A tunnel -->
+    
+    <include>
+      <uri>model://tunnel_29m</uri>
+      <pose>-2.15 9.9 0 0 0 0</pose>
+    </include>
+
+
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <audio>
+      <device>default</device>
+    </audio>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+
+<!--
+    <model name='straight'>
+      <static>1</static>
+      <link name='straight_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='straight_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/straight</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-3.94115 -2.77437 0 0 -0 0</pose>
+    </model>
+    <model name='straight_3'>
+      <static>1</static>
+      <link name='straight_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='straight_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/straight</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>3.2022 -6.34313 0 0 -0 0</pose>
+    </model>
+    <model name='straight_5'>
+      <static>1</static>
+      <link name='straight_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='straight_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/straight</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>10.3432 -6.33981 0 0 -0 0</pose>
+    </model>
+    <model name='curve_0'>
+      <static>1</static>
+      <link name='curve_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='curve_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/curve</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>13.9176 -6.33793 0 0 -0 0</pose>
+    </model>
+    <model name='straight_6'>
+      <static>1</static>
+      <link name='straight_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='straight_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/straight</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>13.9152 -2.77263 0 0 -0 0</pose>
+    </model>
+    <model name='straight_7'>
+      <static>1</static>
+      <link name='straight_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='straight_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/straight</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>13.9067 0.805331 0 0 -0 0</pose>
+    </model>
+    <model name='straight_10'>
+      <static>1</static>
+      <link name='straight_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='straight_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/straight</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>13.924 7.94776 0 0 -0 0</pose>
+    </model>
+    <model name='straight_11'>
+      <static>1</static>
+      <link name='straight_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='straight_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/straight</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>3.18957 7.95063 0 0 -0 0</pose>
+    </model>
+    <model name='straight_13'>
+      <static>1</static>
+      <link name='straight_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='straight_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/straight</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>10.3494 11.5221 0 0 -0 0</pose>
+    </model>
+    <model name='curve_3'>
+      <static>1</static>
+      <link name='curve_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='curve_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/curve</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>13.9231 11.5263 0 0 -0 0</pose>
+    </model>
+    <model name='straight_14'>
+      <static>1</static>
+      <link name='straight_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='straight_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/straight</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-7.51493 -6.34438 0 0 -0 0</pose>
+    </model>
+    <model name='straight_16'>
+      <static>1</static>
+      <link name='straight_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='straight_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/straight</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-11.0828 -6.3452 0 0 -0 0</pose>
+    </model>
+    <model name='straight_17'>
+      <static>1</static>
+      <link name='straight_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='straight_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/straight</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-14.654 -6.34586 0 0 -0 0</pose>
+    </model>
+    <model name='curve_4'>
+      <static>1</static>
+      <link name='curve_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='curve_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/curve</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-18.2277 -6.33934 0 0 -0 0</pose>
+    </model>
+    <model name='straight_18'>
+      <static>1</static>
+      <link name='straight_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='straight_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/straight</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-18.2189 -2.76707 0 0 -0 0</pose>
+    </model>
+    <model name='straight_19'>
+      <static>1</static>
+      <link name='straight_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='straight_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/straight</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-18.2188 0.808056 0 0 -0 0</pose>
+    </model>
+    <model name='curve_5'>
+      <static>1</static>
+      <link name='curve_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='curve_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/curve</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-3.93983 7.94583 0 0 -0 0</pose>
+    </model>
+    <model name='straight_22'>
+      <static>1</static>
+      <link name='straight_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='straight_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/straight</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-11.0821 7.94719 0 0 -0 0</pose>
+    </model>
+    <model name='straight_24'>
+      <static>1</static>
+      <link name='straight_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='straight_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/straight</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-18.2197 7.94322 0 0 -0 0</pose>
+    </model>
+    <model name='curve_8'>
+      <static>1</static>
+      <link name='curve_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='curve_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/curve</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-18.2129 11.5147 0 0 -0 0</pose>
+    </model>
+    <model name='curve_9'>
+      <static>1</static>
+      <link name='curve_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='curve_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/curve</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-14.6433 11.5123 0 0 -0 0</pose>
+    </model>
+    <model name='curve_10'>
+      <static>1</static>
+      <link name='curve_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='curve_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/curve</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-14.645 7.94716 0 0 -0 0</pose>
+    </model>
+    <state world_name='default'>
+      <sim_time>808 373000000</sim_time>
+      <real_time>1571 114921224</real_time>
+      <wall_time>1600953089 186214901</wall_time>
+      <iterations>781643</iterations>
+
+      <model name='curve_0'>
+        <pose frame=''>13.9176 -6.34181 0 0 -0 3.14159</pose>
+        <scale>1 1 1</scale>
+        <link name='curve_link'>
+          <pose frame=''>13.9176 -6.34181 0 0 -0 3.14159</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='curve_0_clone'>
+        <pose frame=''>-7.46503 11.5303 -0 0 -0 3.14159</pose>
+        <scale>1 1 1</scale>
+        <link name='curve_link'>
+          <pose frame=''>-7.46503 11.5303 -0 0 -0 3.14159</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='curve_0_clone_0'>
+        <pose frame=''>-3.92918 -6.35955 0 0 -0 3.14159</pose>
+        <scale>1 1 1</scale>
+        <link name='curve_link'>
+          <pose frame=''>-3.92918 -6.35955 0 0 -0 3.14159</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='curve_0_clone_clone'>
+        <pose frame=''>-0.342856 11.5249 0 0 -0 3.14159</pose>
+        <scale>1 1 1</scale>
+        <link name='curve_link'>
+          <pose frame=''>-0.342856 11.5249 0 0 -0 3.14159</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='curve_0_clone_clone_clone'>
+        <pose frame=''>6.76878 11.4907 0 0 -0 3.14159</pose>
+        <scale>1 1 1</scale>
+        <link name='curve_link'>
+          <pose frame=''>6.76878 11.4907 0 0 -0 3.14159</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='curve_10'>
+        <pose frame=''>-14.6181 11.5279 -0 0 -0 1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='curve_link'>
+          <pose frame=''>-14.6181 11.5279 -0 0 -0 1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='curve_10_clone'>
+        <pose frame=''>-3.91889 11.5224 0 0 -0 1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='curve_link'>
+          <pose frame=''>-3.91889 11.5224 0 0 -0 1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='curve_10_clone_clone'>
+        <pose frame=''>3.19429 11.4955 -0 0 -0 1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='curve_link'>
+          <pose frame=''>3.19429 11.4955 -0 0 -0 1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='curve_10_clone_clone_clone'>
+        <pose frame=''>-0.35544 -6.34503 0 0 -0 1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='curve_link'>
+          <pose frame=''>-0.35544 -6.34503 0 0 -0 1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='curve_3'>
+        <pose frame=''>13.8985 15.0478 0 0 0 -1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='curve_link'>
+          <pose frame=''>13.8985 15.0478 0 0 0 -1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='curve_4'>
+        <pose frame=''>-18.2193 -6.34247 0 0 -0 1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='curve_link'>
+          <pose frame=''>-18.2193 -6.34247 0 0 -0 1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='curve_5'>
+        <pose frame=''>-3.91012 7.9572 0 0 0 -0.009441</pose>
+        <scale>1 1 1</scale>
+        <link name='curve_link'>
+          <pose frame=''>-3.91012 7.9572 0 0 0 -0.009441</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='curve_8'>
+        <pose frame=''>-18.2115 15.0877 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='curve_link'>
+          <pose frame=''>-18.2115 15.0877 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='curve_8_clone'>
+        <pose frame=''>-7.47436 15.0978 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='curve_link'>
+          <pose frame=''>-7.47436 15.0978 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='curve_8_clone_clone'>
+        <pose frame=''>-0.361748 15.0632 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='curve_link'>
+          <pose frame=''>-0.361748 15.0632 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='curve_8_clone_clone_clone'>
+        <pose frame=''>6.75837 15.0438 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='curve_link'>
+          <pose frame=''>6.75837 15.0438 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='curve_9'>
+        <pose frame=''>-14.6413 15.0928 -0 0 0 -1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='curve_link'>
+          <pose frame=''>-14.6413 15.0928 -0 0 0 -1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='curve_9_clone'>
+        <pose frame=''>-3.90763 15.0944 0 0 0 -1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='curve_link'>
+          <pose frame=''>-3.90763 15.0944 0 0 0 -1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='curve_9_clone_clone'>
+        <pose frame=''>3.21397 15.0551 0 0 0 -1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='curve_link'>
+          <pose frame=''>3.21397 15.0551 0 0 0 -1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='curve_9_clone_clone_clone'>
+        <pose frame=''>-0.354187 7.94225 0 0 0 -1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='curve_link'>
+          <pose frame=''>-0.354187 7.94225 0 0 0 -1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+
+      <model name='straight'>
+        <pose frame=''>-3.92524 -2.78352 0 0 -0 1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='straight_link'>
+          <pose frame=''>-3.92524 -2.78352 0 0 -0 1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='straight_10'>
+        <pose frame=''>13.9055 7.94776 0 0 -0 1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='straight_link'>
+          <pose frame=''>13.9055 7.94776 0 0 -0 1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='straight_10_clone'>
+        <pose frame=''>13.9002 11.4753 0 0 -0 1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='straight_link'>
+          <pose frame=''>13.9002 11.4753 0 0 -0 1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='straight_11'>
+        <pose frame=''>-0.3619 0.783446 0 0 -0 1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='straight_link'>
+          <pose frame=''>-0.3619 0.783446 0 0 -0 1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='straight_11_clone'>
+        <pose frame=''>-3.93002 0.792125 0 0 -0 1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='straight_link'>
+          <pose frame=''>-3.93002 0.792125 0 0 -0 1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='straight_11_clone_0'>
+        <pose frame=''>-0.356766 4.36636 0 0 -0 1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='straight_link'>
+          <pose frame=''>-0.356766 4.36636 0 0 -0 1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='straight_11_clone_clone'>
+        <pose frame=''>-3.93055 4.36945 0 0 -0 1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='straight_link'>
+          <pose frame=''>-3.93055 4.36945 0 0 -0 1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='straight_13'>
+        <pose frame=''>10.3397 15.0526 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='straight_link'>
+          <pose frame=''>10.3397 15.0526 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='straight_14'>
+        <pose frame=''>-7.51493 -6.34438 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='straight_link'>
+          <pose frame=''>-7.51493 -6.34438 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='straight_16'>
+        <pose frame=''>-11.0895 -6.3445 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='straight_link'>
+          <pose frame=''>-11.0895 -6.3445 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='straight_17'>
+        <pose frame=''>-14.6641 -6.34384 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='straight_link'>
+          <pose frame=''>-14.6641 -6.34384 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='straight_18'>
+        <pose frame=''>-18.2183 -2.76947 0 0 -0 1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='straight_link'>
+          <pose frame=''>-18.2183 -2.76947 0 0 -0 1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='straight_19'>
+        <pose frame=''>-18.2188 0.805066 0 0 -0 1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='straight_link'>
+          <pose frame=''>-18.2188 0.805066 0 0 -0 1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='straight_19_clone'>
+        <pose frame=''>-18.2258 4.37439 0 0 -0 1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='straight_link'>
+          <pose frame=''>-18.2258 4.37439 0 0 -0 1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='straight_22'>
+        <pose frame=''>-11.0415 11.5434 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='straight_link'>
+          <pose frame=''>-11.0415 11.5434 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='straight_24'>
+        <pose frame=''>-18.2275 7.94322 0 0 -0 1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='straight_link'>
+          <pose frame=''>-18.2275 7.94322 0 0 -0 1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='straight_24_clone'>
+        <pose frame=''>-18.2251 11.5185 0 0 -0 1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='straight_link'>
+          <pose frame=''>-18.2251 11.5185 0 0 -0 1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='straight_3'>
+        <pose frame=''>3.2022 -6.34313 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='straight_link'>
+          <pose frame=''>3.2022 -6.34313 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='straight_3_clone'>
+        <pose frame=''>6.80601 -6.41501 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='straight_link'>
+          <pose frame=''>6.80601 -6.41501 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='straight_5'>
+        <pose frame=''>10.3432 -6.33981 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='straight_link'>
+          <pose frame=''>10.3432 -6.33981 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='straight_6'>
+        <pose frame=''>13.9152 -2.77263 0 0 -0 1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='straight_link'>
+          <pose frame=''>13.9152 -2.77263 0 0 -0 1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='straight_7'>
+        <pose frame=''>13.9067 0.805331 0 0 -0 1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='straight_link'>
+          <pose frame=''>13.9067 0.805331 0 0 -0 1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='straight_7_clone'>
+        <pose frame=''>13.9038 4.37049 0 0 -0 1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='straight_link'>
+          <pose frame=''>13.9038 4.37049 0 0 -0 1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='straight_clone'>
+        <pose frame=''>-0.368208 -2.77358 0 0 -0 1.5708</pose>
+        <scale>1 1 1</scale>
+        <link name='straight_link'>
+          <pose frame=''>-0.368208 -2.77358 0 0 -0 1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box'>
+        <pose frame=''>-12.2787 13.6775 0.5 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>-12.2787 13.6775 0.5 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0'>
+        <pose frame=''>-8.95766 16.0532 0.5 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>-8.95766 16.0532 0.5 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_1'>
+        <pose frame=''>-2.14886 15.5807 0.5 0 -0 0</pose>
+        <scale>0.259018 0.220899 4.2907</scale>
+        <link name='link'>
+          <pose frame=''>-2.14886 15.5807 0.5 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_1_clone'>
+        <pose frame=''>1.36064 12.2096 0.5 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>1.36064 12.2096 0.5 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_1_clone_0'>
+        <pose frame=''>5.01132 13.2495 0.5 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>5.01132 13.2495 0.5 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_1_clone_1'>
+        <pose frame=''>8.57042 13.3155 0.5 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>8.57042 13.3155 0.5 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_1_clone_2'>
+        <pose frame=''>-5.52952 13.3034 0.5 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>-5.52952 13.3034 0.5 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_clone'>
+        <pose frame=''>5.02337 15.9208 0.5 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>5.02337 15.9208 0.5 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>13.153 7.13746 1.74078 0 0.403643 2.7722</pose>
+        <view_controller>ortho</view_controller>
+        <projection_type>orthographic</projection_type>
+      </camera>
+    </gui>
+    <model name='straight_24_clone'>
+      <static>1</static>
+      <link name='straight_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='straight_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/straight</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-18.2406 11.5268 0 0 -0 1.5708</pose>
+    </model>
+    <model name='curve_0_clone'>
+      <static>1</static>
+      <link name='curve_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='curve_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/curve</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-7.57511 11.3331 0 0 -0 3.14159</pose>
+    </model>
+    <model name='curve_8_clone'>
+      <static>1</static>
+      <link name='curve_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='curve_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/curve</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-7.57442 14.8107 0 0 -0 0</pose>
+    </model>
+    <model name='curve_9_clone'>
+      <static>1</static>
+      <link name='curve_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='curve_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/curve</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-4.09229 14.7849 0 0 0 -1.5708</pose>
+    </model>
+    <model name='curve_10_clone'>
+      <static>1</static>
+      <link name='curve_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='curve_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/curve</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-4.10804 11.2912 0 0 -0 1.5708</pose>
+    </model>
+    <model name='curve_0_clone_clone'>
+      <static>1</static>
+      <link name='curve_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='curve_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/curve</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-0.61076 11.2814 0 0 -0 3.14159</pose>
+    </model>
+    <model name='curve_8_clone_clone'>
+      <static>1</static>
+      <link name='curve_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='curve_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/curve</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-0.683053 14.7978 0 0 -0 0</pose>
+    </model>
+    <model name='curve_9_clone_clone'>
+      <static>1</static>
+      <link name='curve_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='curve_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/curve</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>2.81423 14.7879 0 0 0 -1.5708</pose>
+    </model>
+    <model name='curve_10_clone_clone'>
+      <static>1</static>
+      <link name='curve_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='curve_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/curve</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>2.79847 11.2943 0 0 -0 1.5708</pose>
+    </model>
+    <model name='curve_0_clone_clone_clone'>
+      <static>1</static>
+      <link name='curve_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='curve_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/curve</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>6.30028 11.2196 0 0 -0 3.14159</pose>
+    </model>
+    <model name='curve_8_clone_clone_clone'>
+      <static>1</static>
+      <link name='curve_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='curve_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/curve</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>6.22898 14.7139 0 0 -0 0</pose>
+    </model>
+    <model name='straight_10_clone'>
+      <static>1</static>
+      <link name='straight_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='straight_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/straight</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>13.9002 11.4753 0 0 -0 1.5708</pose>
+    </model>
+    <model name='straight_7_clone'>
+      <static>1</static>
+      <link name='straight_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='straight_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/straight</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>13.8807 4.51945 0 0 -0 1.5708</pose>
+    </model>
+    <model name='straight_3_clone'>
+      <static>1</static>
+      <link name='straight_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='straight_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/straight</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>6.80601 -6.41501 0 0 -0 0</pose>
+    </model>
+    <model name='curve_10_clone_clone_clone'>
+      <static>1</static>
+      <link name='curve_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='curve_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/curve</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-0.35544 -6.30503 0 0 -0 1.5708</pose>
+    </model>
+    <model name='curve_0_clone_0'>
+      <static>1</static>
+      <link name='curve_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='curve_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/curve</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-4.09033 -6.33523 0 0 -0 3.14159</pose>
+    </model>
+    <model name='straight_clone'>
+      <static>1</static>
+      <link name='straight_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='straight_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/straight</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-0.368208 -2.77358 0 0 -0 1.5708</pose>
+    </model>
+    <model name='straight_11_clone'>
+      <static>1</static>
+      <link name='straight_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='straight_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/straight</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-4.10002 0.715173 0 0 -0 1.5708</pose>
+    </model>
+    <model name='straight_11_clone_0'>
+      <static>1</static>
+      <link name='straight_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='straight_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/straight</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-0.346765 4.20045 0 0 -0 1.5708</pose>
+    </model>
+    <model name='straight_11_clone_clone'>
+      <static>1</static>
+      <link name='straight_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='straight_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/straight</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-4.10055 4.2317 0 0 -0 1.5708</pose>
+    </model>
+    <model name='curve_9_clone_clone_clone'>
+      <static>1</static>
+      <link name='curve_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='curve_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/curve</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-0.364084 7.9338 0 0 0 -1.5708</pose>
+    </model>
+    <model name='straight_19_clone'>
+      <static>1</static>
+      <link name='straight_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1000</mass>
+          <inertia>
+            <ixx>1080</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1080</iyy>
+            <iyz>0</iyz>
+            <izz>2160</izz>
+          </inertia>
+        </inertial>
+        <visual name='straight_top_image_visual'>
+          <pose frame=''>0 0 0.011 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>3.575 3.575 0.02</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tiles/materials/scripts</uri>
+              <uri>model://tiles/materials/textures</uri>
+              <name>tiles/straight</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>-18.2037 4.33835 0 0 -0 1.5708</pose>
+    </model>
+-->
+
+    <model name='unit_box'>
+      <pose frame=''>-12.2787 13.6775 0.5 0 -0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0'>
+      <pose frame=''>-8.95766 16.0532 0.5 0 -0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_1'>
+      <pose frame=''>-2.14886 15.5807 0.5 0 -0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.999999 1 1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.999999 1 1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_1_clone'>
+      <pose frame=''>1.36064 12.2096 0.5 0 -0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.259018 0.2209 4.29071</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.259018 0.2209 4.29071</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_1_clone_0'>
+      <pose frame=''>5.01132 13.2495 0.5 0 -0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.259018 0.2209 4.29071</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.259018 0.2209 4.29071</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_1_clone_1'>
+      <pose frame=''>8.57042 13.3155 0.5 0 -0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.259018 0.2209 4.29071</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.259018 0.2209 4.29071</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_clone'>
+      <pose frame=''>5.02337 15.9208 0.5 0 -0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_1_clone_2'>
+      <pose frame=''>-5.52952 13.3034 0.5 0 -0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.259018 0.2209 4.29071</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.259018 0.2209 4.29071</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+  </world>
+</sdf>

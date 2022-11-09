@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Starts RQT Plot and subscribes to /ground_truth_x /noisy_odom_x -->
+
+<launch>
+  <node name="kf_plot"
+        pkg="rqt_plot"
+        type="rqt_plot"
+        args="/ground_truth_x /noisy_odom_x" />
+</launch>

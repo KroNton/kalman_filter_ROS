@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Gazebo Course Simulation for Unit 5: "Particle Filter" -->
+
+<launch>
+
+  <arg name="model" default="$(find particle_filter)/urdf/turtlebot2.urdf"/>
+  <param name="robot_description" textfile="$(arg model)" />
+
+  <!-- Spawn a robot into Gazebo -->
+  <!-- Requires: urdf 'robot_description' in parameter server -->
+  <arg name= "pos_x" default = "-3.5"/>
+  <arg name= "pos_y" default = "5.0"/>
+  <arg name= "pos_z" default = "0.0"/>
+  <arg name= "yaw" default = "0"/>
+  <arg name= "robot_name" default= "robot_base"/>
+
+  <node name="urdf_robot_model_spawner" pkg="gazebo_ros" type="spawn_model"
+    args="-param robot_description
+    -urdf
+    -x $(arg pos_x)
+    -y $(arg pos_y)
+    -z $(arg pos_z)
+    -Y $(arg yaw)
+    -model $(arg robot_name)"
+	  respawn="false" output="screen"/>
+    
+  <!-- Arguments that can be passed to this launch file from the CLI, for example paused:=true -->
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+  <arg name="physics" default="ode"/>
+  <arg name="extra_gazebo_args" default="--verbose"/>
+
+  <!-- Change the name of the world to be launched as required -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find particle_filter)/worlds/jackal_race.world"/>
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <arg name="extra_gazebo_args" value="$(arg extra_gazebo_args)"/>
+    <arg name="physics" default="$(arg physics)"/>
+  </include>
+
+</launch>

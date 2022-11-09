@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Starts RQT Plot subscribed to ground truth, noisy odometry, position from laser and kalman filter -->
+
+<launch>
+  <node name="kf_plot"
+        pkg="rqt_plot"
+        type="rqt_plot"
+        args="/ground_truth_x /noisy_odom_x /position_from_laser_ray /filtered_pos" />
+</launch>

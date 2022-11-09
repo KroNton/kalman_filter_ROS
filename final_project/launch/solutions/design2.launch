@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Top-level launch file for final project -->
+
+<launch>
+
+  <!-- Run the map server to load a pre-made map -->
+  <arg name="map_file" default="$(find final_project)/maps/final_project_world.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+    
+  <!-- navsat_transform_node -->
+  <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform_node" respawn="true">
+    <param name="frequency" value="30"/>
+    <param name="delay" value="3.0"/>
+    <param name="magnetic_declination_radians" value="0"/>
+    <param name="yaw_offset" value="0"/>
+    <param name="zero_altitude" value="true"/>  
+    <param name="broadcast_utm_transform" value="true"/>
+    <param name="publish_filtered_gps" value="true"/>   
+    <param name="use_odometry_yaw" value="false"/>
+    <param name="wait_for_datum" value="false"/>
+    <!-- Inputs. Default topics are: imu/data, gps/fix, odometry/filtered -->
+    <remap from="/imu/data" to="/mobile_base/sensors/imu_data_raw" />
+    <remap from="/gps/fix" to="/navsat/fix" /> <!-- should match <topicName> of gazebo plugin -->
+    <remap from="/odometry/filtered" to="/odometry/filtered_gps" /> <!-- should match output of global_ekf -->
+    <!-- Outputs. Default topics are: /odometry/gps, /gps/filtered (optional) -->
+  </node>
+
+  <!-- EKF Global -->
+  <node pkg="robot_localization" type="ekf_localization_node" name="global_ekf"> 
+      <param name="frequency" value="30"/>  
+      <param name="sensor_timeout" value="0.1"/>  
+      <param name="two_d_mode" value="true"/>
+      <param name="transform_time_offset" value="0.0"/>
+      <param name="transform_timeout" value="0.0"/>
+      <!-- Outputs map->odom transform (if enabled)-->
+      <!-- publish TF from world_frame parameter to base_link_frame parameter -->
+      <param name="publish_tf" value="true"/>
+      <param name="odom_frame" value="odom"/>
+      <param name="map_frame" value="map"/>
+      <param name="base_link_frame" value="base_footprint"/>
+      <!-- The filter used world_frame parameter as the parent frame for its TF broadcast -->
+      <!-- global EKF uses map as world frame -->
+      <!-- Your odometry source will often broadcast that transform as well  -->
+      <param name="world_frame" value="map"/>
+      <!-- Inputs -->
+      <!-- IMU -->
+      <param name="imu0" value="/mobile_base/sensors/imu_data_raw"/> 
+      <rosparam param="imu0_config">[false, false, false,
+                                     true,  true, false,
+                                     false, false, false,
+                                     true,  true,  true,
+                                     true,  true,  true]</rosparam>
+      <param name="imu0_differential" value="false"/>
+      <param name="imu0_relative" value="true"/>
+      <param name="imu0_queue_size" value="10"/>
+      <param name="imu0_nodelay" value="true"/>
+      <param name="imu0_remove_gravitational_acceleration" value="true"/>
+      <!-- GPS odometry, odometry that comes from gps data (navsat_transform_node) -->
+      <param name="odom0" value="/odometry/gps_REMOVED_REMOVED_REMOVED"/> 
+      <rosparam param="odom0_config">[true, true, false,
+                                      false, false, false,
+                                      false, false, false,
+                                      false, false, false,
+                                      false, false, false]</rosparam>
+      <param name="odom0_differential" value="false"/>
+      <param name="odom0_relative" value="false"/>
+      <param name="odom0_queue_size" value="10"/>
+      <param name="odom0_nodelay" value="true"/>
+      <!-- Wheel odometry -->
+      <param name="odom1" value="/odom"/> 
+      <rosparam param="odom1_config">[false, false, false,
+                                      false, false, false,
+                                      true, true, true,
+                                      false, false, true,
+                                      false, false, false]</rosparam>
+      <param name="odom1_differential" value="false"/>
+      <param name="odom1_relative" value="false"/>
+      <param name="odom1_queue_size" value="10"/>
+      <param name="odom1_nodelay" value="true"/>
+      <!-- Outputs Default topics are: odometry/filtered, accel/filtered (if enabled) -->
+      <remap from="odometry/filtered" to="odometry/filtered_gps" /> <!-- <remap from="odometry/filtered" to="odometry/filtered_map"/> -->
+
+      <rosparam param="process_noise_covariance">[1.0,  0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                    0,    1.0,  0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                    0,    0,    1e-3, 0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                    0,    0,    0,    0.3,  0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                    0,    0,    0,    0,    0.3,  0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0.01, 0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0.5,   0,     0,    0,    0,    0,    0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,     0.5,   0,    0,    0,    0,    0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,     0,     0.1,  0,    0,    0,    0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,     0,     0,    0.3,  0,    0,    0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0.3,  0,    0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0.3,  0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0.3,  0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0.3,  0,
+                                                    0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0.3]</rosparam>
+
+
+    <rosparam param="initial_estimate_covariance"> [1.0,  0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                    0,    1.0,  0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                    0,    0,    1e-9, 0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                    0,    0,    0,    1.0,  0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                    0,    0,    0,    0,    1.0,  0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                    0,    0,    0,    0,    0,    1e-9, 0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    1.0,  0,    0,    0,     0,     0,     0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,    1.0,  0,    0,     0,     0,     0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,    0,    1.0,  0,     0,     0,     0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,    0,    0,    1.0,   0,     0,     0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     1.0,   0,     0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     1.0,   0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     1.0,  0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    1.0,  0,
+                                                    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    1.0]</rosparam>
+
+  </node>
+
+  <!-- EKF Local -->
+  <node pkg="robot_localization" type="ekf_localization_node" name="local_ekf"> 
+      <param name="frequency" value="60"/>  
+      <param name="sensor_timeout" value="0.1"/>  
+      <param name="two_d_mode" value="true"/>
+      <param name="transform_time_offset" value="0.0"/>
+      <param name="transform_timeout" value="0.0"/>
+      <!-- Outputs base_link_frame w.r.t world_frame transform (if enabled)-->
+      <param name="publish_tf" value="true"/>
+      <param name="odom_frame" value="odom"/>
+      <param name="map_frame" value="map"/>
+      <param name="base_link_frame" value="base_footprint"/>
+      <!-- local EKF uses odom as world frame -->
+      <param name="world_frame" value="odom"/>
+      <!-- Inputs --> 
+      <param name="imu0" value="/mobile_base/sensors/imu_data_raw"/> 
+      <rosparam param="imu0_config">[false, false, false, 
+                                     true,  true,  false,
+                                     false, false, false,
+                                     true,  true,  true,
+                                     true,  true,  true]</rosparam>
+      <param name="imu0_differential" value="false"/>
+      <param name="imu0_relative" value="false"/>
+      <param name="imu0_queue_size" value="10"/>
+      <param name="imu0_nodelay" value="false"/>
+      <param name="imu0_remove_gravitational_acceleration" value="true"/>
+      <param name="odom0" value="/odom"/> 
+      <rosparam param="odom0_config">[false, false, false,
+                                      false, false, false,
+                                      true,  true,  true,
+                                      false, false, true,
+                                      false, false, false]</rosparam>
+      <param name="odom0_differential" value="false"/>
+      <param name="odom0_relative" value="false"/>
+      <param name="odom0_queue_size" value="10"/>
+      <param name="odom0_nodelay" value="true"/>
+
+      <rosparam param="process_noise_covariance">[1e-3, 0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                    0,    1e-3, 0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                    0,    0,    1e-3, 0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                    0,    0,    0,    0.3,  0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                    0,    0,    0,    0,    0.3,  0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0.01, 0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0.5,   0,     0,    0,    0,    0,    0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,     0.5,   0,    0,    0,    0,    0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,     0,     0.1,  0,    0,    0,    0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,     0,     0,    0.3,  0,    0,    0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0.3,  0,    0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0.3,  0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0.3,  0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0.3,  0,
+                                                    0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0.3]</rosparam>
+
+
+    <rosparam param="initial_estimate_covariance"> [1e-9, 0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                    0,    1e-9, 0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                    0,    0,    1e-9, 0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                    0,    0,    0,    1.0,  0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                    0,    0,    0,    0,    1.0,  0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                    0,    0,    0,    0,    0,    1e-9, 0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    1.0,  0,    0,    0,     0,     0,     0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,    1.0,  0,    0,     0,     0,     0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,    0,    1.0,  0,     0,     0,     0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,    0,    0,    1.0,   0,     0,     0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     1.0,   0,     0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     1.0,   0,    0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     1.0,  0,    0,
+                                                    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    1.0,  0,
+                                                    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    1.0]</rosparam>
+
+      <!-- Outputs Default topics are: odometry/filtered, accel/filtered (if enabled) -->
+      <remap from="odometry/filtered" to="odometry/filtered" />
+  </node>
+
+  <!-- Determine whether to run Rviz or not & set Rviz config file-->
+  <arg name="use_rviz" default="true" />
+  <arg name="rvizconfig" default="$(find final_project)/rviz/design2.rviz"/>
+  <!-- Launching Rviz -->
+  <node if="$(arg use_rviz)" name="rviz" pkg="rviz" type="rviz" respawn="false" args="-d $(arg rvizconfig)"/>
+
+    
+</launch>

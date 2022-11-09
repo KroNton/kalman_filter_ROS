@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Starts ROS Node that publishes noisy odometry -->
+
+<launch>
+
+  <node pkg="ekf_ukf" type="noisy_odom_republisher.py" name="noisy_odom_node" output="screen">
+  </node>
+
+</launch>

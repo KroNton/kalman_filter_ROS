@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Top-level launch file for the EKF exercise -->
+
+<launch>
+
+  <!-- Spawn Turtlebot model in Gazebo -->
+  <!-- Starts ROS Node that publishes noisy odometry -->
+  <!-- Starts robot_localization node -->
+  <!-- Rviz launch -->
+  <!-- Utility to run in a square path -->
+  <node pkg="ekf_ukf" type="ekf_demo_manager.py" name="node_manager" output="screen">
+  </node>
+
+</launch>

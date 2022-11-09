@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    
+  <!-- Run the map server -->
+  <arg name="map" default="$(find particle_filter)/maps/jackal_race.yaml"/>
+  <node type="map_server" pkg="map_server" name="map_server_node" output="screen" args="$(arg map)">
+    <!-- <param name="frame_id" value="/map" /> -->
+  </node>
+
+  <arg name="model" default="$(find particle_filter)/urdf/turtlebot2.urdf"/>
+  <param name="robot_description" textfile="$(arg model)" />
+
+  <!-- Broadcast TF values for all fixed elements in the URDF description tree such as the IMU -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  <!-- Broadcast TF values for all moving elements in the URDF description tree such as wheels -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+  <!-- Determine whether to run Rviz or not & set Rviz config file-->
+  <arg name="use_rviz" default="true" />
+  <arg name="rvizconfig" default="$(find particle_filter)/rviz/amcl_exercise1.rviz"/>
+  <!-- Launching Rviz -->
+  <node if="$(arg use_rviz)" name="rviz" pkg="rviz" type="rviz" respawn="false" args="-d $(arg rvizconfig)"/>
+
+</launch>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Loads Turtlebot URDF description to param server -->
+<!-- Spawns Turtlebot to Gazebo -->
+
+<launch>
+  <arg name="model" default="$(find ekf_ukf)/urdf/turtlebot2.urdf"/>
+  <param name="robot_description" textfile="$(arg model)" />
+
+  <!-- Spawn a robot into Gazebo -->
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -z 1 -model mobile_base" />
+
+  <!-- Broadcast TF values for all elements in the URDF description tree such as the IMU -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+</launch>
+

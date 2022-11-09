@@ -1,0 +1,95 @@
+material tiles/3way
+ {
+	technique
+	{
+		pass
+		{
+      // no lighting
+			lighting off
+			scene_blend alpha_blend
+      // make color greater than x also transparent
+      alpha_rejection greater 200
+
+			texture_unit
+			{
+				texture 3wayB8.png
+        // define the type of filter used when magnifying or minifying a texture
+        filtering anistropic
+        // set level of filtering
+        max_anisotropy 2
+			}
+		}
+	}
+}
+
+material tiles/4way
+ {
+	technique
+	{
+		pass
+		{
+      // no lighting
+			lighting off
+			scene_blend alpha_blend
+      // make color greater than x also transparent
+      alpha_rejection greater 200
+
+			texture_unit
+			{
+				texture 4wayB8.png
+        // define the type of filter used when magnifying or minifying a texture
+        filtering anistropic
+        // set level of filtering
+        max_anisotropy 2
+			}
+		}
+	}
+}
+
+material tiles/straight
+ {
+	technique
+	{
+		pass
+		{
+      // no lighting
+			lighting off
+			scene_blend alpha_blend
+      // make color greater than x also transparent
+      alpha_rejection greater 200
+
+			texture_unit
+			{
+				texture straightB8.png
+        // define the type of filter used when magnifying or minifying a texture
+        filtering anistropic
+        // set level of filtering
+        max_anisotropy 2 
+			}
+		}
+	}
+}
+
+material tiles/curve
+ {
+	technique
+	{
+		pass
+		{
+      // no lighting
+			lighting off
+			scene_blend alpha_blend
+      // make color greater than x also transparent
+      alpha_rejection greater 200
+
+			texture_unit
+			{
+				texture turnB8.png
+        // define the type of filter used when magnifying or minifying a texture
+        filtering anistropic
+        // set level of filtering
+        max_anisotropy 2
+			}
+		}
+	}
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="tunnel_29m">
+    <static>true</static>
+    <link name="link">
+      <collision name="wall_01">
+        <pose>-0.0 0 2.14 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>12.15 0.31 4.28</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://tunnel_29m/meshes/wall_29m.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+
+       <visual name='visual_roof_0'>
+        <pose>0 3.425 2.505 0 0 0</pose><!--  3.5 - 0.15/2  -->
+
+        <geometry>
+          <box>
+            <size>29 7 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://tunnel_29m/materials/scripts</uri>
+            <uri>model://tunnel_29m/materials/textures</uri>
+            <name>tunnel_29m/Roof</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

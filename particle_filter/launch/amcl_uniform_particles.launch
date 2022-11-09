@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Launches AMCL with uniform random particles -->
+
+<launch>
+  <param name="/use_sim_time" value="true"/>
+
+  <!-- amcl -->
+  <include file="$(find particle_filter)/launch/amcl_robot.launch" /> 
+
+  <!-- MOVE_BASE -->
+  <include file="$(find particle_filter)/launch/move_base.launch" />
+
+  <!-- Determine whether to launch AMCL with uniform random particles or not -->
+  <arg name="uniform_random_particles" default="true" />
+  <!-- set amcl with uniform random particles -->
+  <node if="$(arg uniform_random_particles)" pkg="rosservice" type="rosservice" name="global_loc" args="call --wait /global_localization" />
+
+  <!-- Determine whether to run Rviz or not & set Rviz config file-->
+  <arg name="use_rviz" default="true" />
+  <arg name="rvizconfig" default="$(find particle_filter)/rviz/navigation.rviz"/>
+  <node if="$(arg use_rviz)" name="rviz" pkg="rviz" type="rviz" respawn="false" args="-d $(arg rvizconfig)"/>
+
+</launch>

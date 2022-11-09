@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Starts simulated robot (ground truth and sensor noise generator) node -->
+
+<launch>
+
+<!-- set odometry_noise_profile as a list with 3 values [p_under, p_correct, p_over] that must sum up 1.0 -->
+<!-- where p_under = the probabilities for undershooting, p_correct = beeing spot on, p_over = overshooting -->
+<arg name="odometry_noise_profile" default="[.05, .9, .05]"/>
+<rosparam param="odometry_noise_profile" subst_value="True">$(arg odometry_noise_profile)</rosparam>
+<!-- Light sensor accuracy rate, meaning the frequency of correct readings (between 0.0 and 1.0) -->
+<param name="light_sensor_accuracy_rate" value="0.95"/>
+
+<node pkg="bayes_tutorials" name="simulated_robot_node" type="simulated_robot.py" output="screen"> 
+</node>
+
+</launch>

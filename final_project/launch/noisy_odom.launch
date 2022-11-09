@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Starts ROS Node that publishes noisy odometry -->
+
+<launch>
+
+  <node pkg="final_project" type="noisy_odom.py" name="noisy_odometry" output="screen">
+  </node>
+
+</launch>

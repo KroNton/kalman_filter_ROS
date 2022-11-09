@@ -1,0 +1,482 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+
+<model name="ground_concrete">
+      <static>true</static>
+      <link name='link'>
+      <collision name='collision'>
+      <pose>1.5 1.5 0 0 0 0</pose>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>15 15</size>
+          </plane>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.2</mu>
+              <mu2>.2</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+
+<!-- Column 1: x=-4.5 -->
+      <visual name='visual_-2_-2'>
+        <pose>-4.5 -4.5 0 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>3 3</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://ground_concrete/materials/scripts</uri>
+            <uri>model://ground_concrete/materials/textures</uri>
+            <name>vrc/ground_concrete</name>
+          </script>
+        </material>
+      </visual>
+
+      <visual name='visual_-2_-1'>
+        <pose>-4.5 -1.5 0 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>3 3</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://ground_concrete/materials/scripts</uri>
+            <uri>model://ground_concrete/materials/textures</uri>
+            <name>vrc/ground_concrete</name>
+          </script>
+        </material>
+      </visual>
+
+      <visual name='visual_-2_1'>
+        <pose>-4.5 1.5 0 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>3 3</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://ground_concrete/materials/scripts</uri>
+            <uri>model://ground_concrete/materials/textures</uri>
+            <name>vrc/ground_concrete</name>
+          </script>
+        </material>
+      </visual>
+
+      <visual name='visual_-2_2'>
+        <pose>-4.5 4.5 0 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>3 3</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://ground_concrete/materials/scripts</uri>
+            <uri>model://ground_concrete/materials/textures</uri>
+            <name>vrc/ground_concrete</name>
+          </script>
+        </material>
+      </visual>
+
+      <visual name='visual_-2_3'>
+        <pose>-4.5 7.5 0 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>3 3</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://ground_concrete/materials/scripts</uri>
+            <uri>model://ground_concrete/materials/textures</uri>
+            <name>vrc/ground_concrete</name>
+          </script>
+        </material>
+      </visual>
+
+<!-- Column 2: x=-1.5 -->
+      <visual name='visual_-1_-2'>
+        <pose>-1.5 -4.5 0 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>3 3</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://ground_concrete/materials/scripts</uri>
+            <uri>model://ground_concrete/materials/textures</uri>
+            <name>vrc/ground_concrete</name>
+          </script>
+        </material>
+      </visual>
+
+      <visual name='visual_-1_-1'>
+        <pose>-1.5 -1.5 0 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>3 3</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://ground_concrete/materials/scripts</uri>
+            <uri>model://ground_concrete/materials/textures</uri>
+            <name>vrc/ground_concrete</name>
+          </script>
+        </material>
+      </visual>
+      <visual name='visual_-1_1'>
+        <pose>-1.5 1.5 0 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>3 3</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://ground_concrete/materials/scripts</uri>
+            <uri>model://ground_concrete/materials/textures</uri>
+            <name>vrc/ground_concrete</name>
+          </script>
+        </material>
+      </visual>
+
+      <visual name='visual_-1_2'>
+        <pose>-1.5 4.5 0 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>3 3</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://ground_concrete/materials/scripts</uri>
+            <uri>model://ground_concrete/materials/textures</uri>
+            <name>vrc/ground_concrete</name>
+          </script>
+        </material>
+      </visual>
+
+      <visual name='visual_-1_3'>
+        <pose>-1.5 7.5 0 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>3 3</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://ground_concrete/materials/scripts</uri>
+            <uri>model://ground_concrete/materials/textures</uri>
+            <name>vrc/ground_concrete</name>
+          </script>
+        </material>
+      </visual>  
+
+<!-- Column 3: x= 1.5 -->
+      <visual name='visual_1_-2'>
+        <pose>1.5 -4.5 0 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>3 3</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://ground_concrete/materials/scripts</uri>
+            <uri>model://ground_concrete/materials/textures</uri>
+            <name>vrc/ground_concrete</name>
+          </script>
+        </material>
+      </visual>
+
+      <visual name='visual_1_-1'>
+        <pose>1.5 -1.5 0 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>3 3</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://ground_concrete/materials/scripts</uri>
+            <uri>model://ground_concrete/materials/textures</uri>
+            <name>vrc/ground_concrete</name>
+          </script>
+        </material>
+      </visual>
+
+      <visual name='visual_1_1'>
+        <pose>1.5 1.5 0 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>3 3</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://ground_concrete/materials/scripts</uri>
+            <uri>model://ground_concrete/materials/textures</uri>
+            <name>vrc/ground_concrete</name>
+          </script>
+        </material>
+      </visual>
+     
+      <visual name='visual_1_2'>
+        <pose>1.5 4.5 0 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>3 3</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://ground_concrete/materials/scripts</uri>
+            <uri>model://ground_concrete/materials/textures</uri>
+            <name>vrc/ground_concrete</name>
+          </script>
+        </material>
+      </visual>
+
+      <visual name='visual_1_3'>
+        <pose>1.5 7.5 0 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>3 3</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://ground_concrete/materials/scripts</uri>
+            <uri>model://ground_concrete/materials/textures</uri>
+            <name>vrc/ground_concrete</name>
+          </script>
+        </material>
+      </visual>
+
+<!-- Column 4: x= 4.5 -->
+      <visual name='visual_2_-2'>
+        <pose>4.5 -4.5 0 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>3 3</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://ground_concrete/materials/scripts</uri>
+            <uri>model://ground_concrete/materials/textures</uri>
+            <name>vrc/ground_concrete</name>
+          </script>
+        </material>
+      </visual>
+
+      <visual name='visual_2_-1'>
+        <pose>4.5 -1.5 0 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>3 3</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://ground_concrete/materials/scripts</uri>
+            <uri>model://ground_concrete/materials/textures</uri>
+            <name>vrc/ground_concrete</name>
+          </script>
+        </material>
+      </visual>
+
+      <visual name='visual_2_1'>
+        <pose>4.5 1.5 0 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>3 3</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://ground_concrete/materials/scripts</uri>
+            <uri>model://ground_concrete/materials/textures</uri>
+            <name>vrc/ground_concrete</name>
+          </script>
+        </material>
+      </visual>
+
+      <visual name='visual_2_2'>
+        <pose>4.5 4.5 0 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>3 3</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://ground_concrete/materials/scripts</uri>
+            <uri>model://ground_concrete/materials/textures</uri>
+            <name>vrc/ground_concrete</name>
+          </script>
+        </material>
+      </visual>
+
+      <visual name='visual_2_3'>
+        <pose>4.5 7.5 0 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>3 3</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://ground_concrete/materials/scripts</uri>
+            <uri>model://ground_concrete/materials/textures</uri>
+            <name>vrc/ground_concrete</name>
+          </script>
+        </material>
+      </visual>
+
+<!-- Column 5: x= 7.5 -->
+      <visual name='visual_3_-2'>
+        <pose>7.5 -4.5 0 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>3 3</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://ground_concrete/materials/scripts</uri>
+            <uri>model://ground_concrete/materials/textures</uri>
+            <name>vrc/ground_concrete</name>
+          </script>
+        </material>
+      </visual>
+
+      <visual name='visual_3_-1'>
+        <pose>7.5 -1.5 0 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>3 3</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://ground_concrete/materials/scripts</uri>
+            <uri>model://ground_concrete/materials/textures</uri>
+            <name>vrc/ground_concrete</name>
+          </script>
+        </material>
+      </visual>
+
+      <visual name='visual_3_1'>
+        <pose>7.5 1.5 0 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>3 3</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://ground_concrete/materials/scripts</uri>
+            <uri>model://ground_concrete/materials/textures</uri>
+            <name>vrc/ground_concrete</name>
+          </script>
+        </material>
+      </visual>
+
+      <visual name='visual_3_2'>
+        <pose>7.5 4.5 0 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>3 3</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://ground_concrete/materials/scripts</uri>
+            <uri>model://ground_concrete/materials/textures</uri>
+            <name>vrc/ground_concrete</name>
+          </script>
+        </material>
+      </visual>
+
+      <visual name='visual_3_3'>
+        <pose>7.5 7.5 0 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>3 3</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://ground_concrete/materials/scripts</uri>
+            <uri>model://ground_concrete/materials/textures</uri>
+            <name>vrc/ground_concrete</name>
+          </script>
+        </material>
+      </visual>
+    
+      </link>
+    </model>
+
+</sdf>

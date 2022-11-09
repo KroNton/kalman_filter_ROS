@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="parking_column">
+    <static>true</static>
+    <link name="parking_column_link">
+        <collision name="parking_column_collision">  
+         <geometry>
+            <mesh>
+                <uri>model://parking_column/meshes/model.dae</uri>
+                <scale>1.0 1.0 1.0</scale>
+            </mesh>
+        </geometry>
+      </collision>
+      
+      <visual name="parking_column_mesh">
+        <cast_shadows>true</cast_shadows>
+        <geometry>
+            <mesh>
+                <uri>model://parking_column/meshes/model.dae</uri>
+                <scale>1.0 1.0 1.0</scale>
+            </mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>
