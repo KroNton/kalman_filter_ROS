@@ -19,7 +19,7 @@ from std_msgs.msg import Header, ColorRGBA
 belief=[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
 
 ### Add corridor map HERE ### 
-
+corridor_map=[0, 1, 0, 1, 0, 0, 0, 1, 0, 0]
 
 # change these values modifying ROS parameters
 kernel = [.1, .8, .1]
