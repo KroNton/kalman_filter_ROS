@@ -16,7 +16,7 @@ from geometry_msgs.msg import Quaternion, Pose, Point, Vector3
 from std_msgs.msg import Header, ColorRGBA
 
 ### Add initial belief HERE ### 
-belief=[0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+belief=[0.0, 0.333, 0.0, 0.333, 0.0, 0.0, 0.0, 0.333, 0.0, 0.0]
 
 ### Add corridor map HERE ### 
 corridor_map=[0, 1, 0, 1, 0, 0, 0, 1, 0, 0]
